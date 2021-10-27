@@ -5,7 +5,10 @@ Simple overview of use/purpose.
 
 ## Authors
 
-Contributors names and contact info
+_Contributors names and contact info_
+- Lena Gerken
+- Tina Höflich
+- Miriam Penger
 
 ## Demo Video
 
