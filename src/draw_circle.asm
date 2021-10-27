@@ -1,6 +1,8 @@
 # Based on CESP lecture
-# Authors: Miriam Penger, Lena Gerken, Tina Höflich
+# Authors: Miriam Penger, Lena Gerken, Tina HÃ¶flich
 
+#Function to draw a colored circle with given radius and x- and y-coordinates of center
+#Uses draw_pixel that has to be included in calling function
 draw_circle:
 # Inputs
 #------------------
@@ -13,7 +15,7 @@ draw_circle:
 # s2: y
 # s3: d
 
-addi sp, sp, -32
+addi sp, sp, -44
 sw a3,  (sp)
 sw a4, 4(sp)
 sw a5, 8(sp)
@@ -22,7 +24,9 @@ sw ra, 16(sp)
 sw s1, 20(sp) 
 sw s2, 24(sp)
 sw s3, 28(sp)
-
+sw a1, 32(sp) 
+sw a2, 36(sp)
+sw a3, 40(sp)
 
 mv s1, a5 # x = r
 li s2, 0 # y = 0
@@ -47,15 +51,21 @@ _loop0:
 	
 	add a3, a3, s1 # xc + x
 	add a4, a4, s2 # yc + y
+	mv a1, a3
+	mv a2, a4
+	mv a3, a7
 	jal draw_pixel
 	#----------------------
 	lw a3,  (sp)
 	lw a4, 4(sp)
 	lw a5, 8(sp)
 	lw a7, 12(sp)
-
+	
 	sub a3, a3, s1 # xc - x
 	add a4, a4, s2 # yc + y
+ 	mv a1, a3
+	mv a2, a4
+	mv a3, a7
 	jal draw_pixel
 	#----------------------	
 	lw a3,  (sp)
@@ -65,6 +75,9 @@ _loop0:
 
 	add a3, a3, s1 # xc + x
 	sub a4, a4, s2 # yc - y
+	mv a1, a3
+	mv a2, a4
+	mv a3, a7
 	jal draw_pixel
 	#----------------------
 	lw a3,  (sp)
@@ -74,6 +87,9 @@ _loop0:
 	
 	sub a3, a3, s1 # xc - x
 	sub a4, a4, s2 # yc - y
+	mv a1, a3
+	mv a2, a4
+	mv a3, a7
 	jal draw_pixel
 	
 	#----------------------
@@ -84,6 +100,9 @@ _loop0:
 
 	add a3, a3, s2 # xc + y
 	add a4, a4, s1 # yc + x
+	mv a1, a3
+	mv a2, a4
+	mv a3, a7
 	jal draw_pixel
 	#----------------------		
 	lw a3,  (sp)
@@ -93,6 +112,9 @@ _loop0:
 	
 	sub a3, a3, s2 # xc - y
 	add a4, a4, s1 # yc + x
+	mv a1, a3
+	mv a2, a4
+	mv a3, a7
 	jal draw_pixel
 
 	#----------------------	
@@ -104,6 +126,9 @@ _loop0:
 	
 	add a3, a3, s2 # xc + y
 	sub a4, a4, s1 # yc - x
+	mv a1, a3
+	mv a2, a4
+	mv a3, a7
 	jal draw_pixel
 
 	#----------------------	
@@ -114,6 +139,9 @@ _loop0:
 	
 	sub a3, a3, s2 # xc - y
 	sub a4, a4, s1 # yc - x
+	mv a1, a3
+	mv a2, a4
+	mv a3, a7
 	jal draw_pixel
 
 _end_loop:
@@ -128,30 +156,8 @@ lw ra, 16(sp)
 lw s1, 20(sp) 
 lw s2, 24(sp)
 lw s3, 28(sp)
-addi sp, sp, 32
+lw a1, 32(sp) 
+lw a2, 36(sp)
+lw a3, 40(sp)
+addi sp, sp, 44
 ret
-
-
-draw_pixel:
-# Creates colored pixel at position (x,y)  
-
-# Inputs
-#    a3: x
-#    a4: y
-#    a7: color
-# Outputs: None
-
-	# This is a leaf node where only caller save registers are used
-	# --> No stack push/pop necessary
-
-	# Calculate address
-	li t3, DISPLAY_ADDRESS
-	li t4, DISPLAY_WIDTH
-	mul t6, a4, t4
-	add t6, t6, a3
-	slli, t6, t6, 2 # address *4
-	add t6, t6, t3
-
-	
-	sw a7, (t6)
-	ret
