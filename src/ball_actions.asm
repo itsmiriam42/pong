@@ -130,14 +130,14 @@ addi t0, 5		# t0 is now 5 pixels into the paddle
 bgt a3, t0, next_15	# not in the checked section, jump to the next
 
 # lowest y-coordinate -> highest section of the paddle
-li a1, -1	# y coordinate the same for both paddles
+li a1, -2	# y coordinate the same for both paddles
 # distinguish between a hit of the paddle on the left and one on the right by using the ball's x coordinate
 blt a4, t1, left_paddle	# t1 contains the paddle length constant
 #right paddle
-li a0, -1
+li a0, -2
 j direction_done
 left_paddle:
-li a0, 1
+li a0, 2
 j direction_done
 
 next_15:
@@ -157,26 +157,26 @@ next_25:
 addi t0, 10		# t0 is now 25 pixels into the paddle
 bgt a3, t0, next_35	# not in the checked section, jump to the next
 
-li a1, -1
+li a1, -2
 blt a4, t1, left_paddle
 #right paddle
-li a0, -2
+li a0, -4
 j direction_done
 left_paddle:
-li a0, 2
+li a0, 4
 j direction_done
 
 next_35:
 addi t0, 10		# t0 is now 35 pixels into the paddle
 bgt a3, t0, next_45	# not in the checked section, jump to the next
 
-li a1, 1
+li a1, 2
 blt a4, t1, left_paddle
 #right paddle
-li a0, -2
+li a0, -4
 j direction_done
 left_paddle:
-li a0, 2
+li a0, 4
 j direction_done
 
 next_45:
@@ -196,13 +196,13 @@ next_50:
 addi t0, 5		# t0 is now 50 pixels into the paddle, which is the end of the paddle
 bgt a3, t0, error	# not in the checked section, jump to the next
 
-li a1, 1
+li a1, 2
 blt a4, t1, left_paddle
 #right paddle
-li a0, -1
+li a0, -2
 j direction_done
 left_paddle:
-li a0, 1
+li a0, 2
 j direction_done
 
 error:
@@ -230,9 +230,9 @@ move_ball:
 
 # lets just assume for a start that speed doesn't matter.
 # this means, the new position is the old one plus the vector values.
-#TODO: either add a speed handling function or adapt the vectors in a way that they can be used for speed as well
 
 add a0, a4, a2
 add a1, a5, a3
 
-# some kind of control function to bring it all together
+# TODO: see if the vector solution for speed runs smooth enough, add a speed handling function if necessary
+# TODO: some kind of control function to bring it all together
