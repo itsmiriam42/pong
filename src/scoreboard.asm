@@ -1,4 +1,4 @@
-# Authors: Miriam Penger, Lena Gerken, Tina H�flich
+# Authors: Miriam Penger, Lena Gerken, Tina Höflich
 
 #draws the scoreboard of the pong game pixel by pixel using the draw pixel function
 #
