@@ -1,6 +1,8 @@
 # Based on CESP lecture
 # Authors: Miriam Penger, Lena Gerken, Tina Höflich
 
+.include "draw_pixel.asm"
+
 # Function to draw rectangle from position x1,y1 to x2,y2 with fill color c
 draw_rectangle:
 #----Inputs--------
@@ -10,6 +12,15 @@ draw_rectangle:
 # a6: unsigned integer y2 -- bottom boundary of rectangle
 # a7: unsigned integer c  -- fill color of rectangle as RGB value
 
+	li a1,DISPLAY_ADDRESS	# a1: base address of frame buffer
+	li a2,DISPLAY_WIDTH	# a2: width/height of quadratic image
+	li a3,10 		# a3: unsigned integer x0 -- left boundary of rectangle
+	li a4,90		# a4: unsigned integer y0 -- top boundary of rectangle
+	li a5,15		# a5: unsigned integer x1 -- right boundary of rectangle
+	li a6,150		# a6: unsigned integer y1 -- bottom boundary of rectangle
+	li a7,0xFFFFFF	
+	
+	
 	#memory allocation
 	addi sp, sp, -36
 	sw ra, (sp)
