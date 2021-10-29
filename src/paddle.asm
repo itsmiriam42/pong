@@ -1,9 +1,8 @@
 # Based on CESP lecture
-# Authors: Miriam Penger, Lena Gerken, Tina Höflich
+# Authors: Miriam Penger, Lena Gerken, Tina HÃ¶flich
 
 j main
-.include "cesplib_rars.asm"
-#.include "cesplib_fpgrars.asm"
+
 
 
 .include "draw_rectangle.asm"
