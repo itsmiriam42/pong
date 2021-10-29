@@ -124,6 +124,7 @@ mv t0, zero	# counter for paddle pixels
 #set_direction_paddle:
 li t1, 60	# somewhere in the middle of the field, definitely between the paddles -> TODO: check with field definition if correct, maybe use constant here, also in the following cases
 
+#TODO: asssumed a paddle height of 50 pixels, might need to be adapted
 mv t0, a7
 addi t0, 5		# t0 is now 5 pixels into the paddle
 bgt a3, t0, next_15	# not in the checked section, jump to the next
@@ -216,6 +217,22 @@ ret
 
 
 # moves the ball in a given direction
+move_ball:
+#gets:
+# a2 x-component of the ball's current vector
+# a3 y-component of the ball's current vector
+# a4 current x coordinate of the ball
+# a5 current y coordinate of the ball
 
+#returns:
+# a0 x-coordinate of the ball's new position
+# a1 y-coordinate of the ball's new position
+
+# lets just assume for a start that speed doesn't matter.
+# this means, the new position is the old one plus the vector values.
+#TODO: either add a speed handling function or adapt the vectors in a way that they can be used for speed as well
+
+add a0, a4, a2
+add a1, a5, a3
 
 # some kind of control function to bring it all together
