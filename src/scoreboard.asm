@@ -1,4 +1,4 @@
-# Authors: Miriam Penger, Lena Gerken, Tina Höflich
+# Authors: Miriam Penger, Lena Gerken, Tina Hï¿½flich
 
 #draws the scoreboard of the pong game pixel by pixel using the draw pixel function
 #
@@ -554,7 +554,7 @@ sw ra, 24 (sp)
   #--------------4-------------
    switch.vier:
    li t1, 4
-  bne t0, t1 switch.fünf
+  bne t0, t1 switch.fuenf
   li a3, 130
   li a4, 10
   li a5, 130
@@ -572,7 +572,7 @@ sw ra, 24 (sp)
   jal draw_line
   beq zero, zero switch.end_2
   #--------------5------------
-  switch.fünf:
+  switch.fuenf:
    li t1, 5
   bne t0, t1 switch.sechs
   li a3, 130
