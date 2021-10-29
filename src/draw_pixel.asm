@@ -13,6 +13,10 @@ draw_pixel:
 #    a1: x
 #    a2: y
 #    a3: color
+#li a1, 50
+#li a2, 50
+#li a3, 0xffffff
+
 # Outputs: None
 
 	#allocate memory
@@ -32,7 +36,7 @@ draw_pixel:
 	li s1, DISPLAY_WIDTH
 	
 	# y_offset
-	mul s2, s1, a2  # yâˆ—DISPLAY_WIDTH
+	mul s2, s1, a2  # y*DISPLAY_WIDTH
 			
 	# crt_address = base_address + x_offset + y_offset
 	add s2, a1, s2
