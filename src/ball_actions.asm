@@ -2,6 +2,8 @@
 
 .eqv LEFT_SCORING_BORDER 40	# assuming a display width of 256 and a scoring area width of 40
 .eqv RIGHT_SCORING_BORDER 216	# assuming a display width of 256 and a scoring area width of 40
+#radius 3?
+#farbe weiss
 
 # find out whether the ball reached the scoring area
 check_ball_position:
@@ -126,82 +128,82 @@ li t1, 60	# somewhere in the middle of the field, definitely between the paddles
 
 #TODO: asssumed a paddle height of 50 pixels, might need to be adapted
 mv t0, a7
-addi t0, 5		# t0 is now 5 pixels into the paddle
+addi t0, t0, 5		# t0 is now 5 pixels into the paddle
 bgt a3, t0, next_15	# not in the checked section, jump to the next
 
 # lowest y-coordinate -> highest section of the paddle
 li a1, -2	# y coordinate the same for both paddles
 # distinguish between a hit of the paddle on the left and one on the right by using the ball's x coordinate
-blt a4, t1, left_paddle	# t1 contains the paddle length constant
+blt a4, t1, left_paddle_5	# t1 contains the paddle length constant
 #right paddle
 li a0, -2
 j direction_done
-left_paddle:
+left_paddle_5:
 li a0, 2
 j direction_done
 
 next_15:
-addi t0, 10		# t0 is now 15 pixels into the paddle
+addi t0, t0, 10		# t0 is now 15 pixels into the paddle
 bgt a3, t0, next_25	# not in the checked section, jump to the next
 
 li a1, -2
-blt a4, t1, left_paddle
+blt a4, t1, left_paddle_15
 #right paddle
 li a0, -3
 j direction_done
-left_paddle:
+left_paddle_15:
 li a0, 3
 j direction_done
 
 next_25:
-addi t0, 10		# t0 is now 25 pixels into the paddle
+addi t0, t0, 10		# t0 is now 25 pixels into the paddle
 bgt a3, t0, next_35	# not in the checked section, jump to the next
 
 li a1, -2
-blt a4, t1, left_paddle
+blt a4, t1, left_paddle_25
 #right paddle
 li a0, -4
 j direction_done
-left_paddle:
+left_paddle_25:
 li a0, 4
 j direction_done
 
 next_35:
-addi t0, 10		# t0 is now 35 pixels into the paddle
+addi t0, t0, 10		# t0 is now 35 pixels into the paddle
 bgt a3, t0, next_45	# not in the checked section, jump to the next
 
 li a1, 2
-blt a4, t1, left_paddle
+blt a4, t1, left_paddle_35
 #right paddle
 li a0, -4
 j direction_done
-left_paddle:
+left_paddle_35:
 li a0, 4
 j direction_done
 
 next_45:
-addi t0, 5		# t0 is now 45 pixels into the paddle
+addi t0, t0, 5		# t0 is now 45 pixels into the paddle
 bgt a3, t0, next_50	# not in the checked section, jump to the next
 
 li a1, 2
-blt a4, t1, left_paddle
+blt a4, t1, left_paddle_45
 #right paddle
 li a0, -3
 j direction_done
-left_paddle:
+left_paddle_45:
 li a0, 3
 j direction_done
 
 next_50:
-addi t0, 5		# t0 is now 50 pixels into the paddle, which is the end of the paddle
+addi t0, t0, 5		# t0 is now 50 pixels into the paddle, which is the end of the paddle
 bgt a3, t0, error	# not in the checked section, jump to the next
 
 li a1, 2
-blt a4, t1, left_paddle
+blt a4, t1, left_paddle_50
 #right paddle
 li a0, -2
 j direction_done
-left_paddle:
+left_paddle_50:
 li a0, 2
 j direction_done
 
@@ -217,7 +219,7 @@ ret
 
 
 # moves the ball in a given direction
-move_ball:
+update_ball_position:
 #gets:
 # a2 x-component of the ball's current vector
 # a3 y-component of the ball's current vector
@@ -233,6 +235,8 @@ move_ball:
 
 add a0, a4, a2
 add a1, a5, a3
+#radius und farbe
 
 # TODO: see if the vector solution for speed runs smooth enough, add a speed handling function if necessary
 # TODO: some kind of control function to bring it all together
+#TODO: first ball position using the random int ecall
