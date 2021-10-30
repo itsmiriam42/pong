@@ -240,3 +240,52 @@ add a1, a5, a3
 # TODO: see if the vector solution for speed runs smooth enough, add a speed handling function if necessary
 # TODO: some kind of control function to bring it all together
 #TODO: first ball position using the random int ecall
+
+#initializes the ball by giving it a random y-Position and direction
+init_ball:
+# returns:
+# a0 x-coordinate of the ball's new position
+# a1 y-coordinate of the ball's new position
+# a2 x-component of the ball's new vector
+# a3 y-component of the ball's new vector
+
+# y-coordinate: random number 0-128
+li a7, 42
+li a0, 0
+li a1, 128
+ecall	#randintrange in a0
+mv a1, a0
+mv a0, zero
+
+# x-component vector
+li a1, 5	# 6 possible outcomes
+ecall
+mv a2, a0	# random number in a2
+li t0, 2
+ble a2, t0, move_left
+#move_right: 2, 3 or 4
+li t0, 1
+sub a2, a2, t0
+j end_x_component
+move_left:	# -2, -3 or -4
+li t0, 4
+sub a2, a2, t0
+end_x_component:
+mv a0, zero
+
+# y-component vector
+li a1, 1	# 2 possible outcomes: +2 or -2
+ecall
+mv a3, a0
+li t0, 1
+beq a3, t0, move_down
+# move_up:
+li a3, -2
+j end_y_component
+move_down:
+addi a3, a3, 1	#a3 = 2
+end_y_component:
+
+# x-coordinate
+li a0, 128	# ball always starts in the middle of the field
+ret
