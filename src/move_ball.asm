@@ -159,5 +159,3 @@ move_ball:
 
 li a7, 10
 ecall
-
-.include "draw_ball.asm"
