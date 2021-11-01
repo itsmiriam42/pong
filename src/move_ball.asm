@@ -1,6 +1,7 @@
 # Authors: Miriam Penger, Lena Gerken, Tina Hoeflich
 
-# moves the ball of the pong game using the draw_circle function
+# Moves the ball of the pong game using the draw_rectangle function.
+# Only paints the pixel differences of old and new position after movement for more efficient performance.
 
 move_ball:
 #----Inputs:----
