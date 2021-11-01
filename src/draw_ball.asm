@@ -1,7 +1,7 @@
 # Authors: Miriam Penger, Lena Gerken, Tina Hoeflich
 
-# draws the ball of the pong game using the draw_circle function
-
+# Draws the ball of the pong game using the draw_circle function.
+# Note: This only acts as an init function on startup.
 
 draw_ball:
 #----Inputs:----

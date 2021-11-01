@@ -1,7 +1,7 @@
 # Authors: Miriam Penger, Lena Gerken, Tina Hoeflich
 
-# draws the paddles using the draw_rectangle function
-
+# Draws both paddles using the draw_rectangle function.
+# Note: This only acts as an init function on startup.
 
 draw_paddles:
 	
