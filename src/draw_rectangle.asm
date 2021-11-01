@@ -30,10 +30,12 @@ draw_rectangle:
 			mv a3, t2
 			
 			addi t3, t3, 1	#eine spalte weiter
-			bne t3, a5, _loopx	#abbruchbedingung letzte spalte erreicht
+			add t5, t3 ,a3  #startkoordinate + offset
+			bne t5, a5, _loopx	#abbruchbedingung letzte spalte erreicht
 		addi t4, t4, 1
-		addi t3, zero, 0					
-		bne t4, a6, _loopy
+		addi t3, zero, 0
+		add t6, t4, a4  #startkoordinate + offset
+		bne t6, a6, _loopy
 
 	lw ra, 0(sp)	# korrekte rücksprungadresse vorgeben
 	addi sp, sp, 4	# stackpointer zurücksetzen
