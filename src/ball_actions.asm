@@ -1,5 +1,5 @@
-# authors: Miriam, Tina, Lena
-# handles various actions concerning the ball in pong
+# Authors: Miriam Penger, Lena Gerken, Tina Höflich
+# Handles various actions concerning the ball in pong
 
 .eqv LEFT_SCORING_BORDER 40	# assuming a display width of 256 and a scoring area width of 40
 .eqv RIGHT_SCORING_BORDER 216	# assuming a display width of 256 and a scoring area width of 40
@@ -99,7 +99,7 @@ mv t0, a7
 # check all the sections. if the ball is found, set the direction to the predefined values matching the section.
 # ---check first section---
 addi t0, t0, 5		# t0 is now 5 pixels into the paddle
-bgt a3, t0, next_15	# not in the checked section, jump to the next
+bgt a5, t0, next_15	# not in the checked section, jump to the next
 # lowest y-coordinate -> highest section of the paddle
 li a1, -2	# y coordinate the same for both paddles
 # distinguish between a hit of the paddle on the left and one on the right by using the ball's x coordinate
@@ -113,7 +113,7 @@ j direction_done
 # ---check second section---
 next_15:
 addi t0, t0, 10		# t0 is now 15 pixels into the paddle
-bgt a3, t0, next_25	# not in the checked section, jump to the next
+bgt a5, t0, next_25	# not in the checked section, jump to the next
 li a1, -2
 blt a4, t1, left_paddle_15
 li a0, -3		# right paddle
@@ -125,7 +125,7 @@ j direction_done
 # ---check third section---
 next_25:
 addi t0, t0, 10		# t0 is now 25 pixels into the paddle
-bgt a3, t0, next_35	# not in the checked section, jump to the next
+bgt a5, t0, next_35	# not in the checked section, jump to the next
 li a1, -2
 blt a4, t1, left_paddle_25
 li a0, -4		# right paddle
@@ -137,7 +137,7 @@ j direction_done
 # ---check forth section---
 next_35:
 addi t0, t0, 10		# t0 is now 35 pixels into the paddle
-bgt a3, t0, next_45	# not in the checked section, jump to the next
+bgt a5, t0, next_45	# not in the checked section, jump to the next
 li a1, 2
 blt a4, t1, left_paddle_35
 li a0, -4		# right paddle
@@ -149,7 +149,7 @@ j direction_done
 # ---check fifth section---
 next_45:
 addi t0, t0, 5		# t0 is now 45 pixels into the paddle
-bgt a3, t0, next_50	# not in the checked section, jump to the next
+bgt a5, t0, next_50	# not in the checked section, jump to the next
 li a1, 2
 blt a4, t1, left_paddle_45
 li a0, -3		# right paddle
@@ -161,7 +161,7 @@ j direction_done
 # ---check sixth section---
 next_50:
 addi t0, t0, 5		# t0 is now 50 pixels into the paddle, which is the end of the paddle
-bgt a3, t0, error	# not in the checked section, jump to the next
+bgt a5, t0, error	# not in the checked section, jump to the next
 li a1, 2
 blt a4, t1, left_paddle_50
 li a0, -2		# right paddle
@@ -191,7 +191,6 @@ ret
 
 # TODO: see if the vector solution for speed runs smooth enough, add a speed handling function if necessary
 # TODO: some kind of control function to bring it all together
-# TODO: first ball position using the random int ecall
 
 # function to initialize the ball by giving it a random y-Position and direction
 init_ball:
