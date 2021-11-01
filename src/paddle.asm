@@ -1,5 +1,5 @@
 # Based on CESP lecture
-# Authors: Miriam Penger, Lena Gerken, Tina Höflich
+# Authors: Miriam Penger, Lena Gerken, Tina Hoeflich
 
 j main
 
@@ -13,11 +13,11 @@ j main
 main:
 
 # STEP x initial setup of rectangle coordinates
-li a3, 0 # rectangle x0
-li a4, 0 # rectangle y0
-li a5, 7 # rectangle x1
-li a6, 7 # rectangle y1
-li a7, 0xfffff # color: Here red. 
+li a3, 15 # rectangle x0
+li a4, 55 # rectangle y0
+li a5, 5 # rectangle x1
+li a6, 20 # rectangle y1
+li a7, 0xffffff # color: Here white. 
 
 
 # allocate memory for x0-y1 + color variable
@@ -44,14 +44,14 @@ switch.start:
   switch.w:
   li t1, 'w'
   bne t0, t1 switch.s
-  addi a4, a4, -1
-  addi a6, a6, -1
+  addi a4, a4, -3
+  addi a6, a6, -3
   beq zero, zero switch.end
   switch.s:
   li t1, 's'
   bne t0, t1 switch.end
-  addi a4, a4, 1
-  addi a6, a6, 1
+  addi a4, a4, 3
+  addi a6, a6, 3
   beq zero, zero switch.end
 switch.end:
   #Store changed variables
@@ -67,7 +67,7 @@ sw zero, (s0)
 jal draw_rectangle
 
 #STEP x : Sleep 20 ms 
-li a0, 40
+li a0, 2
 jal cesp_sleep
 
 #STEP x:  Remove rectangle again by drawing a black rectangle of the same dimensions
