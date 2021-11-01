@@ -138,12 +138,12 @@ move_ball:
 	j exit_4
 	
 	exit_4:
-	# paint old one black
+	# paint new one white
 	mv a3, t3
 	mv a4, t4
 	mv a5, t5
 	mv a6, t6
-	li a7, 0	# black
+	li a7, 0xffffff
 	jal draw_rectangle
 
 	
