@@ -3,10 +3,11 @@
 
 # TODO: check and adapt these values. important: they are used to check with the center of the ball, not its closest edge.
 # TODO: use display measurements as a constant defined up here
-.eqv LEFT_SCORING_BORDER 40	# assuming a display width of 256 and a scoring area width of 40
-.eqv RIGHT_SCORING_BORDER 216	# assuming a display width of 256 and a scoring area width of 40
+.eqv LEFT_SCORING_BORDER 26	# assuming a display width of 256 and a scoring area width of 40
+.eqv RIGHT_SCORING_BORDER 240	# assuming a display width of 256 and a scoring area width of 40
 
 # TODO: test this function!
+# TODO: return 3 in s9 if a paddle was hit so that Tina can play a soundeffect. 
 # TODO: check if an x axis correction of the ball coordinates is necessary with a paddle collision like with the edge collision
 # shares s registers 1-9 with the main function
 # moves and draws the ball, checks for collisions and calls the functions to deal with them
@@ -41,7 +42,7 @@ mv t1, a0	# t1 new x coordinate of the ball
 mv t2, a1	# t2 new y coordinate of the ball
 
 # check if the border of the display was hit
-li a1, t2
+mv a1, t2
 jal check_ball_edges
 beq a0, zero, no_edge_collision	# a0 = 0 if no collision happened
 li t0, 1
@@ -250,6 +251,8 @@ change_ball_direction_paddle:
 # a0 x-component of the ball's new vector
 # a1 y-component of the ball's new vector
 
+#TODO: update label names to fit the new paddle length of 30
+
 # assuming a paddle length of 50p, it is divided in 6 sections	# TODO: modify for paddle length of 60p
 mv t0, zero	# counter for paddle pixels
 li t1, 60	# somewhere in the middle of the field, definitely between the paddles -> TODO: check with field definition if correct, maybe use constant here, also in the following cases
@@ -271,7 +274,7 @@ j direction_done
 
 # ---check second section---
 next_15:
-addi t0, t0, 10		# t0 is now 15 pixels into the paddle
+addi t0, t0, 5		# t0 is now 15 pixels into the paddle
 bgt a5, t0, next_25	# not in the checked section, jump to the next
 li a1, -2
 blt a4, t1, left_paddle_15
@@ -283,7 +286,7 @@ j direction_done
 
 # ---check third section---
 next_25:
-addi t0, t0, 10		# t0 is now 25 pixels into the paddle
+addi t0, t0, 5		# t0 is now 25 pixels into the paddle
 bgt a5, t0, next_35	# not in the checked section, jump to the next
 li a1, -2
 blt a4, t1, left_paddle_25
@@ -295,7 +298,7 @@ j direction_done
 
 # ---check forth section---
 next_35:
-addi t0, t0, 10		# t0 is now 35 pixels into the paddle
+addi t0, t0, 5		# t0 is now 35 pixels into the paddle
 bgt a5, t0, next_45	# not in the checked section, jump to the next
 li a1, 2
 blt a4, t1, left_paddle_35
@@ -319,7 +322,7 @@ j direction_done
 
 # ---check sixth section---
 next_50:
-addi t0, t0, 5		# t0 is now 50 pixels into the paddle, which is the end of the paddle
+addi t0, t0, 10		# t0 is now 50 pixels into the paddle, which is the end of the paddle
 bgt a5, t0, error	# not in the checked section, jump to the next
 li a1, 2
 blt a4, t1, left_paddle_50
@@ -351,6 +354,7 @@ ret
 # TODO: see if the vector solution for speed runs smooth enough, add a speed handling function if necessary
 # TODO: some kind of control function to bring it all together -> it also needs to remember the previous position to delete the old ball
 
+# TODO: y-component vector shouldnt be too close to the edges!! otherwise immediate collision or even off screen
 # function to initialize the ball by giving it a random y-Position and direction
 init_ball:
 # returns:
