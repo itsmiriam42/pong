@@ -1,11 +1,62 @@
 #Function to display a picture on the bitmap display
+# gets:
+# - 
+# returns:
+# - 
+# !!! Function calls uses paths to load the pictures that are displayed on the screen !!!
+# !!! individual pathnames have to be added !!! 
 .data
+
 .eqv max_read 400000
 .eqv BMP_BUFFER 0x10070000
 
+# Paths where images are stored
+bmp_filename_winner_l: .string "C:/rars_programming_project/pong-main/src/winner_left.bmp"
+bmp_filename_start: .string "C:/rars_programming_project/pong-main/src/startbildschirm.bmp"
+bmp_filename_winner_r: .string "C:/rars_programming_project/pong-main/src/winner_right.bmp"
+
+
 .text
+# Display image saying "Right Player wins"
+win_image_right:
+addi sp, sp ,-4
+sw ra, 0(sp)
+la a1, bmp_filename_winner_r
+li a2, BMP_BUFFER
+li a3, DISPLAY_ADDRESS
 
+jal load_bmp
+lw ra, 0(sp)
+addi sp, sp 4
+ret
 
+# Display image saying "Left Player wins"
+win_image_left:
+addi sp, sp,-4
+sw ra, 0(sp)
+la a1, bmp_filename_winner_l
+li a2, BMP_BUFFER
+li a3, DISPLAY_ADDRESS
+
+jal load_bmp
+lw ra, 0(sp)
+addi sp, sp 4
+ret
+
+# Display image saying "Pong - press space to start"
+start_image:
+addi sp, sp ,-4
+sw ra, 0(sp)
+la a1, bmp_filename_start
+li a2, BMP_BUFFER
+li a3, DISPLAY_ADDRESS
+
+jal load_bmp
+lw ra, 0(sp)
+addi sp, sp 4
+ret
+
+#Function that loads a .bmp image 
 load_bmp:
 	#input
 	#	a1 : pointer to string of filename
@@ -17,10 +68,10 @@ load_bmp:
 	#	s0: address of image buffer
 	#	s1: image size in bytes
 	#	s2: bitmap offset
-	#      s3: pointer to string of filename
+	#       s3: pointer to string of filename
 	#	s4: image width
-	#    	s5: image height
-	#      s6: filehandle
+	#       s5: image height
+	#       s6: filehandle
 	
 	addi sp, sp, -32
 	sw s0, 0x0 (sp)
@@ -39,7 +90,7 @@ load_bmp:
 
 	# Open file handle for reading
 	li a7, 1024
-	mv a0,s3 # todo change to use passed value from a..
+	mv a0, s3
 	add a1, zero, zero
 	ecall             
 
