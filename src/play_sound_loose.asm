@@ -42,7 +42,7 @@ addi sp, sp, -8
         mv      a0, t1
         mv      a1, a5
         addi    a3, zero, 127
-        addi    a2, zero, 60 #bass
+        addi    a2, zero, 60 #brass
         addi    a4, a4, 1
         ecall   
         
