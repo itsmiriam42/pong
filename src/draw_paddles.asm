@@ -3,6 +3,10 @@
 # Draws both paddles using the draw_rectangle function.
 # Note: This only acts as an init function on startup.
 
+# returns:
+# a4: highest y coordinate reached by the paddle on the left
+# a6: highest y coordinate reached by the paddle on the right
+
 draw_paddles:
 	
 	# Save all necessary values to the stack
@@ -27,6 +31,8 @@ draw_paddles:
 	jal draw_rectangle
 		
 	# Restore and jump back
+	li a4, 50	# returns highest y coordinate reached by the paddle on the left
+	li a6, 50	# returns highest y coordinate reached by the paddle on the right
 	lw ra, 0 (sp)
 	addi sp, sp, 4
 	ret
@@ -35,4 +41,4 @@ draw_paddles:
 li a7, 10
 ecall
 
-.include "draw_rectangle.asm"
+#.include "draw_rectangle.asm"
