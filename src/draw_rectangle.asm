@@ -42,4 +42,4 @@ draw_rectangle:
 	ret
 
 
-.include "draw_pixel.asm"
+#.include "draw_pixel.asm"

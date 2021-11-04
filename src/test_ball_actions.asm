@@ -198,4 +198,4 @@ addi sp, sp, 16	# stackpointer back
 li a7, 10
 ecall
 
-.include "ball_actions.asm"
+#.include "ball_actions.asm"

@@ -363,4 +363,4 @@ move_ball:
 	lw ra, 0 (sp)
 	ret
 	
-	.include "draw_rectangle.asm"
+#	.include "draw_rectangle.asm"

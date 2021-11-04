@@ -3,7 +3,7 @@
 
 j draw_pixel
 #.include "cesplib_fpgrars.asm"
-.include "cesplib_rars.asm"
+#.include "cesplib_rars.asm"
 
 draw_pixel:
 # Draws a colored pixel at position (x,y)  
