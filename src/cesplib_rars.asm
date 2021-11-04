@@ -7,14 +7,13 @@
 bmp_filename_winner_r: .string "C:/rars_programming_project/pong-main/src/winner_right.bmp"
 bmp_filename_start: .string "C:/rars_programming_project/pong-main/src/startbildschirm.bmp"
 mp_filename_winner_l: .string "C:/rars_programming_project/pong-main/src/winner_right.bmp"
-j cesplib.end
 
-cesp_sleep:
+#cesp_sleep:
 # Input:
 #   a0: number of ms to sleep
-  li a7, 32
-  ecall
-  ret
+  #li a7, 32
+  #ecall
+  #ret
 
 
-cesplib.end:
+#cesplib.end:
