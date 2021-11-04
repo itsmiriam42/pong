@@ -19,8 +19,14 @@
 # score = 0
 
 .include "cesplib_rars.asm"
-
+.text
 main:
+
+#start_loop:
+#jal start_image
+#li 	t0, KEYBOARD_ADDDRESS
+#li 	t1, 'k'
+#bne 	t0, t1, start_loop
 
 	jal init_ball 
 	# move returened values into registers s1-s4 
@@ -83,10 +89,11 @@ main:
 		beq s10, t1 , win_left_player
 		beq s11, t1 , win_right_player
 		win_left_player:
-			jal display_image_left
+			jal win_image_left
 		win_right_player:
-			jal display_image_right
-		jal sound_win
+			jal win_image_right
+		jal play_sound_brass
+
 	
 	# end game 
 		li a7, 10
@@ -105,3 +112,4 @@ main:
 .include "play_soundeffect.asm"
 .include "scoreboard.asm"
 .include "readwordunaligned.asm"
+.include "display_image.asm"
