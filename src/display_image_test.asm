@@ -1,4 +1,4 @@
-
+# Function to call the funtions that display the start and win - screen
 j main
 
 .include "cesplib_rars.asm"
@@ -6,11 +6,8 @@ j main
 
 .text
 main:
-la a1, bmp_filename_winner_r
-li a2, BMP_BUFFER
-li a3, DISPLAY_ADDRESS
 
-jal load_bmp
+jal start_image
 
 
 li a7, 10
