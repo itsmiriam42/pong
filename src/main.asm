@@ -18,6 +18,8 @@
 # soundeffekt
 # score = 0
 
+.include "cesplib_rars.asm"
+
 main:
 
 	jal init_ball 
