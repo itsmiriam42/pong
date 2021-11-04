@@ -90,7 +90,7 @@ main:
 		li a7, 10
 		ecall
 		
-.include "move_paddles"	
+.include "move_paddles.asm"	
 .include "draw_pixel.asm"
 .include "draw_line.asm"
 .include "draw_circle.asm"
