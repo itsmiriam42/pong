@@ -18,6 +18,8 @@
 # soundeffekt
 # score = 0
 
+.include "cesplib_rars.asm"
+
 main:
 
 	jal init_ball 
@@ -102,4 +104,4 @@ main:
 .include "play_sound_win.asm"
 .include "play_soundeffect.asm"
 .include "scoreboard.asm"
-
+.include "readwordunaligned.asm"
