@@ -3,32 +3,19 @@
 .data
 .L__const.main.pitches:
         .word   64                              # 0x40
-        .word   67                              # 0x43
-        .word   71                              # 0x47
-        .word   72                              # 0x48
-        .word   71                              # 0x47
-        .word   67                              # 0x43
-        .word   64                              # 0x40
+        .word   67                             # 0x43
+        .word   72                              # 0x47
+        
 
 
 .L__const.main.duration:
-        .word   400                             # 0x190
-        .word   400                             # 0x190
-        .word   400                             # 0x190
-        .word   400                             # 0x190
-        .word   400                             # 0x190
-        .word   400                             # 0x190
+        .word   200                             # 0x190
+        .word   200                             # 0x190
         .word   800                             # 0x190
+       
  
 .text
 
-main:                                   
-        
-	jal play_sound_brass  
-	#end
-	li a7, 10
-	ecall
-	
  
 play_sound_brass:   
 
@@ -55,7 +42,7 @@ addi sp, sp, -8
         mv      a0, t1
         mv      a1, a5
         addi    a3, zero, 127
-        addi    a2, zero, 57 #bass
+        addi    a2, zero, 60 #bass
         addi    a4, a4, 1
         ecall   
         
