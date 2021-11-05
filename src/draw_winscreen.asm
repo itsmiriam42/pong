@@ -1,4 +1,4 @@
-# Function to draw a "win" on the display, so it is resetted
+# Function to draw a "win" on the display
 
 # a3: unsigned integer x1 --  x coordinate of starting point
 # a4: unsigned integer y1 -- y coordinate of starting point
