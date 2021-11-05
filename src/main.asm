@@ -17,21 +17,24 @@
 # display_image
 # soundeffekt
 # score = 0
-j main
+
 .data
 loop_test: .string "for_loop\0"
+
+j main
 .include "cesplib_rars.asm"
 .text
-main:
-
+main: 
 jal start_image
 start_loop:
 li s0, KEYBOARD_ADDDRESS
+lw t0, (s0)
+beq t0, zero start_loop
 lw t0, 4(s0)
-li 	t1, 'k'
+li t1, 'k'
 #print to console
 li  a7, 4          # Prints a null-terminated string to the console
-la	a0, 	loop_test
+la a0, loop_test
 ecall
 bne 	t0, 	t1, 	start_loop
 
