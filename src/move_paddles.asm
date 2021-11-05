@@ -3,7 +3,7 @@
 
 # Moves paddles according to keyboard inputs.
 # 'w' and 's' for up/down movement of left paddle
-# '8' and '2' (num block) for up/down movement of right paddle
+# 'o' and 'l' for up/down movement of right paddle
 
 # Inputs:
 # a4: highest y coordinate reached by the paddle on the left
@@ -73,7 +73,7 @@ move_paddles:
 		# left paddle down
 		switch.s:
 			li t1, 's'
-			bne t0, t1 switch.num8
+			bne t0, t1 switch.o
 			li t3, DISPLAY_HEIGHT
 			addi t2, t3, -30	# subtract paddle length of 30 as only top y coordinate is known for bottom impact collision detection
 			bge a4, t2, switch.end_paddles	# won't move left paddle beyond the bottom screen boundaries
@@ -100,10 +100,10 @@ move_paddles:
 			lw a6, 8 (sp)	# stays the same as it was not moved
 
 			beq zero, zero switch.end_paddles
-		# right paddle up (num block)
-		switch.num8:
-			li t1, '8'
-			bne t0, t1 switch.num2
+		# right paddle up
+		switch.o:
+			li t1, 'o'
+			bne t0, t1 switch.l
 			ble a6, zero, switch.end_paddles	# won't move right paddle beyond the top screen boundaries
 
 			li a3, 233	# set left boundary
@@ -128,9 +128,9 @@ move_paddles:
 			lw a4, 4 (sp)	# stays the same as it was not moved
 			
 			beq zero, zero switch.end_paddles
-		# right paddle down (num block)
-		switch.num2:
-			li t1, '2'
+		# right paddle down
+		switch.l:
+			li t1, 'l'
 			bne t0, t1 switch.end_paddles
 			li t3, DISPLAY_HEIGHT
 			addi t2, t3, -30	# subtract paddle length of 30 as only top y coordinate is known for bottom impact collision detection
