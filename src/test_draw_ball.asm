@@ -1,4 +1,4 @@
-# Authors: Miriam Penger, Lena Gerken, Tina Höflich
+# Authors: Miriam Penger, Lena Gerken, Tina Hoeflich
 # Test for the function in draw_ball.asm
 
 # The ball is shown in the upper left corner of the display so that the outer edges are exactly at the edge of the display.
