@@ -1,4 +1,4 @@
-# Funtion to draw a blackscreen on the display, so it is resetted
+# Function to draw a blackscreen on the display, so it is resetted
 
 # gets:
 # - 
