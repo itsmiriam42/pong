@@ -36,6 +36,7 @@ Now two Players can start playing the game.
 
 ### Game instructions 
 The two Players use different keys on the keybard to conrtol their paddles.
+~Left Player
 
 ## Files
 Describe the content of each file of your application: e.g.
