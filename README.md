@@ -23,7 +23,7 @@ Replace -h3eH4ubuno in the this .md by your YT video
 ### How to run
 
 
-###Requirements:
+### Requirements:
 
 To be able to play the game, it is necessary to change the path of the different images, that will be displayed throughout the game. This can be done in `src/display_image.asm`, where the paths are inserted at the beginning of the document, separated by a slash `/`.
 
@@ -34,7 +34,7 @@ To get started, the _Bitmap Display_ and _Keyboard Simulator_ must be configured
 
 Now two Players can start playing the game. 
 
-###Game instructions 
+### Game instructions 
 The two Players use different keys on the keybard to conrtol their paddles.
 
 ## Files
