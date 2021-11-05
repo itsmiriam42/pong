@@ -31,6 +31,21 @@ lw ra, 0(sp)
 addi sp, sp 4
 ret
 
+
+# Display black image on screen, to reset the screen 
+image_reset:
+addi sp, sp ,-4
+sw ra, 0(sp)
+la a1, bmp_filename_reset_screen
+li a2, BMP_BUFFER
+li a3, DISPLAY_ADDRESS
+
+jal load_bmp
+lw ra, 0(sp)
+addi sp, sp 4
+ret
+
+
 # Display image saying "Left Player wins"
 win_image_left:
 addi sp, sp,-4
