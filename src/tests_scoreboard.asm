@@ -5,9 +5,10 @@ sucess_label: .string "Programm terminated sucessfully \0"
 .text
 
 main:
+# testing the right number
 li a2,1
 jal draw_right_number
-
+# testing the left number
 li a2,10
 jal draw_left_number
 
