@@ -14,6 +14,7 @@
 bmp_filename_winner_l: .string "C:/rars_programming_project/pong-main/src/winner_left.bmp"
 bmp_filename_start: .string "C:/rars_programming_project/pong-main/src/startbildschirm.bmp"
 bmp_filename_winner_r: .string "C:/rars_programming_project/pong-main/src/winner_right.bmp"
+bmp_filename_reset_screen: .string "C:/rars_programming_project/pong-main/src/reset_screen.bmp"
 
 
 .text
@@ -167,5 +168,5 @@ load_bmp:
 	ret
 		
 	  
-.include "readwordunaligned.asm"
+
 

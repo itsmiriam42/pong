@@ -763,8 +763,14 @@ sw ra, 24 (sp)
  
 #function to initialize the scoreboard with 0 : 0 
 init_scoreboard:
+addi sp, sp, -4
+sw ra ,(sp)
+
 jal draw_dots
 li a2,0
 jal draw_left_number
 li a2,0
 jal draw_right_number
+lw ra,  (sp)
+addi sp, sp, 4
+ ret

@@ -57,6 +57,11 @@ draw_line:
 	lw s0, 4 (sp)
 	lw s1, 8 (sp)
 	lw s2, 12 (sp)
+	lw a3, 16 (sp)
+	lw a4, 20 (sp)
+	lw a5, 24 (sp)
+	lw a6, 28 (sp)
+	lw a7, 32 (sp)
 	addi sp, sp, 36
 	ret
 
