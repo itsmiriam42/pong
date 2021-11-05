@@ -89,6 +89,13 @@ jal check_paddle_hit
 beq a0, zero, right_paddle_hit # a0 = 0 if the ball hit the paddle
 # a0 = 1 if the ball didn't hit the paddle
 li s9, 2	#SCORE indicator
+
+# delete the ball from the display
+	mv a1, s1 
+	mv a2, s2
+	li a3, 0	#black
+	jal draw_ball
+
 j no_collision	# done
 right_paddle_hit:
 #change_ball_direction_paddle
@@ -115,6 +122,13 @@ jal check_paddle_hit
 beq a0, zero, left_paddle_hit	# a0 = 0 if the ball hit the paddle
 # a0 = 1 if the ball didn't hit the paddle
 li s9, 1	#SCORE indicator
+
+# delete the ball from the display
+	mv a1, s1 
+	mv a2, s2
+	li a3, 0	#black
+	jal draw_ball
+
 j no_collision	# done
 left_paddle_hit:
 #change_ball_direction_paddle
