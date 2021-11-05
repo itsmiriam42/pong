@@ -140,19 +140,22 @@ bne 	t0, 	t1, 	start_loop
 		beq s10, t1,  win_left_player
 		beq s11, t1,  win_right_player
 		win_right_player:
-			jal win_image_right
+			jal draw_blackscreen
+			jal draw_winscreen
+			#jal win_image_right
 			li  a7, 1          # Prints 2
 			li a0, 2
 			ecall
 			j sound_end
 		win_left_player:
-			jal win_image_left
+			jal draw_blackscreen
+			jal draw_winscreen
 			li  a7, 1          # Prints 3
 			li a0, 3
 			ecall
 		
 		sound_end:
-		jal play_sound_brass
+		#jal play_sound_brass
 
 	
 	# end game 
@@ -174,3 +177,4 @@ bne 	t0, 	t1, 	start_loop
 .include "readwordunaligned.asm"
 .include "display_image.asm"
 .include "draw_blackscreen.asm"
+.include "draw_winscreen.asm"
