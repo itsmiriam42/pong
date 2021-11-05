@@ -83,8 +83,9 @@ bne 	t0, 	t1, 	start_loop
 		li t1, 2
 		beq s9, t1, score_right
 		score_left: # Right Player scored on the left side
-			li t1, 1
-			add s10, t1 ,s10#score left ++
+			#li t1, 1
+			#add s10, t1 ,s10
+			addi s10, s10, 1	#score left ++
 			li s9, 0 #score indicator = 0
 			mv a2, s10
 			jal draw_right_number
@@ -130,14 +131,14 @@ bne 	t0, 	t1, 	start_loop
 	li a0, 1
 	ecall
 		li t1, 11
-		beq s10, t1  win_left_player
-		beq s11, t1  win_right_player
+		beq s10, t1,  win_left_player
+		beq s11, t1,  win_right_player
 		win_right_player:
 			jal win_image_right
 			li  a7, 1          # Prints 2
 			li a0, 2
 			ecall
-			beq zero, zero, sound_end
+			j sound_end
 		win_left_player:
 			jal win_image_left
 			li  a7, 1          # Prints 3
