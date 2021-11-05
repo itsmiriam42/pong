@@ -70,4 +70,19 @@ Describe the content of each file of your application: e.g.
 
 
 ## Test evidence
-Screenshot that shows succedded (unit) tests 
+#### Test `draw_ball`:
+![test_draw_ball](https://user-images.githubusercontent.com/44570841/140580370-663f6ed0-8080-4483-baa1-d11bd6f6eca4.png)
+
+#### Test `draw_paddles`:
+![test_draw_paddles](https://user-images.githubusercontent.com/44570841/140580377-ea8029ab-b637-470e-9826-dc7b153c7531.png)
+#### Test `display_image`:
+![tests_display_image](https://user-images.githubusercontent.com/44570841/140580380-1c593a37-cf1c-4d5a-ae00-af5e267b56ff.PNG)
+#### Test `draw_scoreboard`:
+![tests_scoreboard](https://user-images.githubusercontent.com/44570841/140580383-cc82efd9-0cd7-40b9-b150-dd4aac3e0b31.JPG)
+#### Test `draw_soundeffects`:
+![test_soundeffects](https://user-images.githubusercontent.com/44570841/140580420-83e9dc03-6f68-47d2-aff8-e86f882f4630.PNG)
+
+
+
+
+
