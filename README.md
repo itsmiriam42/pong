@@ -4,8 +4,6 @@
 
 ![image](https://user-images.githubusercontent.com/44570841/140504595-6d2e1c79-c619-4128-9c12-99f364c8ade0.png)
 ## Authors
-
-_Contributors names and contact info_
 - Lena Gerken
 - Tina Höflich
 - Miriam Penger
