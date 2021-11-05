@@ -76,6 +76,12 @@ bne 	t0, 	t1, 	start_loop
 		mv s7, a5 		# highest y coordinate reached by the paddle on the right
 		mv s8, a6 		# lowest y coordinate reached by the paddle on the right
 		jal ball_control
+		
+		# cesp_sleep to adapt speed of ball
+		#li a0, 50
+		#li a7, 32
+  		#ecall
+		
 		li t1, 0
 		beq s9, t1, while_loop
 		li t1,1
