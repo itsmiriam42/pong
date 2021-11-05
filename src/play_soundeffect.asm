@@ -12,7 +12,7 @@ play_soundeffect:
 	addi sp, sp, -4
 	sw ra, 0x0 (sp)
 	li a7,33
-        addi    a0, zero, 45
+        addi    a0, zero, 20
        	addi 	a1, zero, 500
         addi    a3, zero, 127
         addi    a2, zero, 118 #Percussion
