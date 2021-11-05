@@ -1,4 +1,4 @@
-# win scren
+# Function to draw a "win" on the display, so it is resetted
 
 # a3: unsigned integer x1 --  x coordinate of starting point
 # a4: unsigned integer y1 -- y coordinate of starting point
