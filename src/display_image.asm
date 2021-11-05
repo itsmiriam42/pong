@@ -167,5 +167,5 @@ load_bmp:
 	ret
 		
 	  
-.include "readwordunaligned.asm"
+
 
