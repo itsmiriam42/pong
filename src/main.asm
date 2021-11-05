@@ -37,7 +37,7 @@ li  a7, 4          # Prints a null-terminated string to the console
 la a0, loop_test
 ecall
 bne 	t0, 	t1, 	start_loop
-	jal image_reset
+	jal draw_blackscreen
 	jal init_ball 
 	# move returned values into registers s1-s4 
 	# s1-s4 used by ball_control
@@ -123,3 +123,4 @@ bne 	t0, 	t1, 	start_loop
 .include "scoreboard.asm"
 .include "readwordunaligned.asm"
 .include "display_image.asm"
+.include "draw_blackscreen.asm"
