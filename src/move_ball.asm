@@ -361,6 +361,7 @@ move_ball:
 	
 	end_case:
 	lw ra, 0 (sp)
+	addi sp, sp, 20
 	ret
 	
 #	.include "draw_rectangle.asm"
