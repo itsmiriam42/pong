@@ -4,7 +4,7 @@
 .eqv DISPLAY_HEIGHT 128
 .eqv KEYBOARD_ADDDRESS 0xFFFF0000
 .eqv LEFT_SCORING_BORDER 26		# left scoring border is reached when the ball's center reaches this x coordinate value
-.eqv RIGHT_SCORING_BORDER 240	# right scoring border is reached when the ball's center reaches this x coordinate value
+.eqv RIGHT_SCORING_BORDER 230	# right scoring border is reached when the ball's center reaches this x coordinate value
 .eqv PADDLE_WIDTH 5
 .eqv PADDLE_HEIGHT 30
 .eqv PADDLE_MOVEMENT_SPEED 3	# number of pixels that the paddle moves per keystroke
