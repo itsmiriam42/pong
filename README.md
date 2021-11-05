@@ -10,12 +10,11 @@
 
 ## Demo Video
 
-[![IMAGE ALT TEXT](http://img.youtube.com/vi/-h3eH4ubuno/0.jpg)](http://www.youtube.com/watch?v=-h3eH4ubuno "Video Title")
+[![startbildschirm2](https://user-images.githubusercontent.com/44570841/140589220-f2878b76-4443-4c73-8793-d5b04cfe3aa0.png)](https://youtu.be/_gJEUVBnQpo)
 
-Replace -h3eH4ubuno in the this .md by your YT video
-
+A short demonstration video, where the game and it scomponents are explained can be found here. 
 ## Description
-
+The well-known retro game "Pong" is implemented for two players in Assembly Language for RISC-V processors. 
 ### How to run
 
 ### Requirements:
@@ -64,9 +63,18 @@ Describe the content of each file of your application: e.g.
 - [`src/play_soundeffect.asm`](src/play_soundeffect.asm): Plays a short soundeffect, that is used, when a player scored
 - [`src/readwordunaligned.asm`](src/readwordunaligned.asm): Function is required when displaying an image on the bitmap display 
 - [`src/scoreboard.asm`](src/scoreboard.asm): Draws the scoreboard of the pong game pixel by pixel using the draw pixel function
+- [`src/draw_blackscreen.asm`](src/draw_blackscreen.asm): Function to draw a blackscreen on the display, so it is resetted
+- [`src/draw_winscreen.asm`](src/draw_winscreen.asm): Function to draw a "win" on the display, 
+
+
 
 ### Tests
 - [`src/test_ball_actions.asm`](src/test_ball_actions.asm): Tests for the functions in ball_actions.asm
+- [`src/test_draw_ball.asm.asm`](src/test_draw_ball.asm.asm): Test for the function in draw_ball.asm
+- [`src/test_draw_paddles.asm.asm`](src/test_draw_paddles.asm): Test for the function in draw_paddles.asm
+- [`src/test_move_paddles.asm`](src/test_move_paddles.asm): Test for the function in move_paddles.asm
+- [`src/tests_scoreboard.asm`](src/tests_scoreboard.asm): Function to test the scoreboard.asm
+- [`src/tests_winscreen.asm`](src/tests_winscreen.asm): # Function to test the scoreboard.asm
 
 
 ## Test evidence
@@ -81,8 +89,5 @@ Describe the content of each file of your application: e.g.
 ![tests_scoreboard](https://user-images.githubusercontent.com/44570841/140580383-cc82efd9-0cd7-40b9-b150-dd4aac3e0b31.JPG)
 #### Test `draw_soundeffects`:
 ![test_soundeffects](https://user-images.githubusercontent.com/44570841/140580420-83e9dc03-6f68-47d2-aff8-e86f882f4630.PNG)
-
-
-
 
 
