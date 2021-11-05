@@ -3,12 +3,11 @@ j main
 
 .include "cesplib_rars.asm"
 .include "display_image.asm"
+.include "readwordunaligned.asm"
 
 .text
 main:
 
 jal start_image
-
-
 li a7, 10
 ecall
