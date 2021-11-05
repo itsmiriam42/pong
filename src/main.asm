@@ -49,6 +49,7 @@ bne 	t0, 	t1, 	start_loop
 	# draw ball to Bitmap Display
 	mv a1, s1 
 	mv a2,s2
+	li a3, 0xffffff	#white
 	jal draw_ball
 
 	# initial draw of paddles 
