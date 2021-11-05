@@ -102,6 +102,7 @@ bne 	t0, 	t1, 	start_loop
 			mv a2,s2
 			li a3, 0xffffff	#white
 			jal draw_ball
+			j while_loop
 		score_right: # Left Player scored on the right side
 			li t1, 1
 			add s11, s11,t1 #score right ++
