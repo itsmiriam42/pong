@@ -46,15 +46,30 @@ Once a player reaches 11 points, the game is over.
 
 ## Files
 Describe the content of each file of your application: e.g.
+### Libs and resources
+- [`src/cesplib_rars.asm`](src/cesplib_rars.asm): File conatining DISPLAY_ADDRESS and further details of the bitmap display of RARS. It is required, only wors when using [Rars](https://github.com/TheThirdOne/rars)
+- [`src/images`](src/images):Folder containing images, displayed on the screen, while the game is running
 
-[`src/main.asm`](src/main.asm): Main file of the program in which the game flow is located
+### Game
+- [`src/main.asm`](src/main.asm): Main file of the program in which the game flow is located
+- [`src/display_image.asm`](src/display_image.asm): Function to display a picture on the bitmap display
+- [`src/ball_actions.asm`](src/ball_actions.asm): Moves and draws the ball, checks for collisions and calls different functions
+- [`src/draw_ball.asm`](src/draw_ball.asm): Initial draw of the ball of the pong game using the draw_circle function
+- [`src/draw_circle.asm`](src/draw_circle.asm): Function to draw a colored circle with given radius and x- and y-coordinates of center
+- [`src/draw_line.asm`](src/draw_line.asm): Draws a line from one position defined by as x1,y1 to another position defined as x2,y2 and fill it with color
+- [`src/draw_paddles.asm`](src/draw_line.asm): Initially draws both paddles using the draw_rectangle function.
+- [`src/draw_pixel.asm.asm`](src/draw_pixel.asm): Draws a colored pixel at position (x,y)  
+- [`src/draw_rectangle.asm`](src/draw_rectangle.asm): Draws a rectangle from one position defined by as x1,y1 to another position defined as x2,y2 and fill it with color
+- [`src/move_ball.asm`](src/move_ball.asm): Moves the ball of the pong game using the draw_rectangle function and painting the pixel differences of old and new position after movement
+- [`src/move_paddles.asm`](src/move_paddles.asm): Moves paddles according to keyboard inputs
+- [`src/play_sound_win.asm`](src/play_sound_win.asm): Plays a short melody using rars ecall. It is played, when the game is over
+- [`src/play_soundeffect.asm`](src/play_soundeffect.asm): Plays a short soundeffect, that is used, when a player scored
+- [`src/readwordunaligned.asm`](src/readwordunaligned.asm): Function is required when displaying an image on the bitmap display 
+- [`src/scoreboard.asm`](src/scoreboard.asm): Draws the scoreboard of the pong game pixel by pixel using the draw pixel function
 
-[`src/images`](src/images):Folder containing images, displayed on the screen, while the game is running
-
-`src/featureA.asm` # A specific feature called in main
-
-test/test1.asm - test9.asm # 9 unit tests for featureA
+### Tests
+- [`src/test_ball_actions.asm`](src/test_ball_actions.asm): Tests for the functions in ball_actions.asm
 
 
-## Test
+## Test evidence
 Screenshot that shows succedded (unit) tests 
