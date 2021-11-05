@@ -79,9 +79,9 @@ bne 	t0, 	t1, 	start_loop
 		jal ball_control
 		
 		# cesp_sleep to adapt speed of ball
-		#li a0, 50
-		#li a7, 32
-  		#ecall
+		li a0, 50
+		li a7, 32
+  		ecall
 		
 		li t1, 0
 		beq s9, t1, while_loop
@@ -148,6 +148,7 @@ bne 	t0, 	t1, 	start_loop
 			li  a7, 1          # Prints 2
 			li a0, 2
 			ecall
+			beq zero,zero, end_game_here
 		win_left_player:
 			jal draw_blackscreen
 			jal draw_winscreen
@@ -156,11 +157,11 @@ bne 	t0, 	t1, 	start_loop
 			ecall
 		
 
-		jal play_sound_brass
+		
 
-	
+	end_game_here:
 	# end game
-		jal play_soundeffect
+		jal play_sound_brass
 		li a7, 10
 		ecall
 		

@@ -7,7 +7,7 @@
 .eqv RIGHT_SCORING_BORDER 230	# right scoring border is reached when the ball's center reaches this x coordinate value
 .eqv PADDLE_WIDTH 5
 .eqv PADDLE_HEIGHT 30
-.eqv PADDLE_MOVEMENT_SPEED 3	# number of pixels that the paddle moves per keystroke
+.eqv PADDLE_MOVEMENT_SPEED 10	# number of pixels that the paddle moves per keystroke
 .eqv LEFT_PADDLE_BOUNDARY 18	# initial x-coordinate of the left side of the left paddle
 .eqv RIGHT_PADDLE_BOUNDARY 233	# initial x-coordinate of the left side of the right paddle
 .eqv TOP_PADDLE_BOUNDARY 50		# initial y-coordinate of the top side of both paddles
