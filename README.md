@@ -18,30 +18,27 @@ Replace -h3eH4ubuno in the this .md by your YT video
 
 ## Description
 
-
-
 ### How to run
-
 
 ### Requirements:
 
 To be able to play the game, it is necessary to change the path of the different images, that will be displayed throughout the game. This can be done in [`src/display_image.asm`](src/display_image.asm), where the paths are inserted at the beginning of the document, separated by a slash `/`.  
 Specify which file need to be used to run your program:
 e.g.
-To run the game, open `src/main.asm`in [Rars](https://github.com/TheThirdOne/rars). 
+To run the game, open [`src/main.asm`](src/main.asm) in [Rars](https://github.com/TheThirdOne/rars). 
 To get started, the _Bitmap Display_ and _Keyboard Simulator_ must be configured. To do so, the display width of the _Bitmap Display_ needs to be set to **256 pixels** and the height of the Display is set to **128 pixels**. Both tools are then connected to the program.
 
 Now two Players can start playing the game. 
 
 ### Game instructions 
 The two Players use different keys on the keybard to control their paddles:
-**Left Player:**
-`w`: moving paddle upwards
-`s`: moving paddle downwards
+#### Left Player:
+- `w`: moving paddle upwards
+- `s`: moving paddle downwards
 
-**Right Player:**
-`o`: moving paddle upwards
-`l`: moving paddle downwards 
+#### Right Player
++ `o`: moving paddle upwards
++ `l`: moving paddle downwards 
 
 ### Game logic
 Whenever the ball hits the left border of the display, the right player gets a point. The same applies when the ball hits the right edge of the display, the left player gets a point. 
