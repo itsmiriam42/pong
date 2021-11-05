@@ -39,6 +39,7 @@ ecall
 bne 	t0, 	t1, 	start_loop
 	jal draw_blackscreen
 	jal init_ball 
+
 	# move returned values into registers s1-s4 
 	# s1-s4 used by ball_control
 	mv s1, a0 # x-coordinate of the ball's center
@@ -126,6 +127,7 @@ bne 	t0, 	t1, 	start_loop
 			jal draw_ball
 		j while_loop
 	end_game:
+	add ra, zero, zero
 	#print to console
 	li  a7, 1          # Prints 1
 	li a0, 1
@@ -134,22 +136,25 @@ bne 	t0, 	t1, 	start_loop
 		beq s10, t1,  win_left_player
 		beq s11, t1,  win_right_player
 		win_right_player:
-			jal win_image_right
+			jal draw_blackscreen
+			jal draw_winscreen
+			#jal win_image_right
 			li  a7, 1          # Prints 2
 			li a0, 2
 			ecall
-			j sound_end
 		win_left_player:
-			jal win_image_left
+			jal draw_blackscreen
+			jal draw_winscreen
 			li  a7, 1          # Prints 3
 			li a0, 3
 			ecall
 		
-		sound_end:
+
 		jal play_sound_brass
 
 	
-	# end game 
+	# end game
+		jal play_soundeffect
 		li a7, 10
 		ecall
 		
@@ -168,3 +173,4 @@ bne 	t0, 	t1, 	start_loop
 .include "readwordunaligned.asm"
 .include "display_image.asm"
 .include "draw_blackscreen.asm"
+.include "draw_winscreen.asm"

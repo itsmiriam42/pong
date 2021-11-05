@@ -134,11 +134,11 @@ load_bmp:
 	#Copy the image from IMAGE_BUFFER to DISPLAY_ADDRESS
 	add t0, a1, a0 # src = BMP_BUFFER + IMAGE_SIZE (die kommt aus dem read ecall)
 	add t1, zero, a3 # dst = DISPLAY_ADDRESS
-	li t3, 4 # hilfswert f√ºr multiplikation mit 4
-	mv t4, s5 # outer for-loop z√§hlt r√ºckw√§rts
+	li t3, 4 # hilfswert f¸r multiplikation mit 4
+	mv t4, s5 # outer for-loop z‰hlt r¸ckw‰rts
 	li t5, 512 # sollte display width sein (256), keine ahnung wieso 1024
 	
-	li t6, DISPLAY_WIDTH # diese und die n√§chsten 2 Zeilen machen: 4 *(DISPLAY_WIDTH - image_width)
+	li t6, DISPLAY_WIDTH # diese und die n‰chsten 2 Zeilen machen: 4 *(DISPLAY_WIDTH - image_width)
 	sub t6, t6, s4
 	mul t6, t6, t3
 	
@@ -148,7 +148,7 @@ load_bmp:
 	sub t0, t0, t5 # go back by 1 row
 	sub t0, t0, t5 # go back by 1 row
 	loop_y:
-		mv t3, s4 # inner for-loop z√§hlvariable z√§hlt r√ºckw√§rts von image width
+		mv t3, s4 # inner for-loop z‰hlvariable z‰hlt r¸ckw‰rts von image width
 		loop_x:
 		         # Use read_word_unaligned to read a pixel, then update the pixel format
 		         add a1, zero, t0
@@ -159,7 +159,7 @@ load_bmp:
 		         addi t0, t0, 4 # src +=4 - don't ask me why + and not -
 		         addi t1, t1, 4 # dst +=4
 		         
-		         addi t3, t3, -1 # innere z√§hlvariable veringern
+		         addi t3, t3, -1 # innere z‰hlvariable veringern
 		         bnez t3, loop_x
 		sub t0, t0, t5 # go back by 1 row
 		sub t0, t0, t5 # go back by 1 row
@@ -167,9 +167,14 @@ load_bmp:
 		sub t0, t0, t5 # go back by 1 row
 		add t1, t1, t6 # t6 = 4? (DISPLAY_WIDTH ? image_width);
 		
-		addi t4, t4, -1 # √§u√üere Z√§hlvariable veringern
+		addi t4, t4, -1 # ‰uﬂere Z‰hlvariable veringern
 		bnez t4, loop_y
-		
+	
+	#close file	
+	li a7, 	57
+	mv a0, s3
+	ecall
+	
 	lw s0, 0x0 (sp)
 	lw s1, 0x4 (sp)
 	lw s2, 0x8 (sp)
@@ -183,5 +188,4 @@ load_bmp:
 	ret
 		
 	  
-
 

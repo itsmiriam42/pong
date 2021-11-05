@@ -12,11 +12,12 @@ read_word_unaligned:
 	#output
 	#     a0: value at address a1
 	
-	addi sp, sp, -16
+	addi sp, sp, -20
 	sw s3, (sp)
 	sw s4, 4 (sp)
 	sw s5, 8 (sp)
 	sw ra, 12(sp)
+	sw a1, 16(sp)
 	
 	andi s3, a1, 0x3 # byte offset
 	slli s3, s3, 3 # byte offset in bit
@@ -33,6 +34,7 @@ read_word_unaligned:
 	lw s4, 4 (sp)
 	lw s5, 8 (sp)
 	lw ra, 12(sp)
-	addi sp, sp, 16
+	lw a1, 16(sp)
+	addi sp, sp, 20
 	
 	ret

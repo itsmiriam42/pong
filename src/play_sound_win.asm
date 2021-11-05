@@ -18,16 +18,25 @@
 
  
 play_sound_brass:   
-
+addi sp, sp,-36
+sw a2,  0 (sp)
+sw a3,  4 (sp)
+sw a4,  8 (sp)
+sw a5, 12 (sp)
+sw a6, 16 (sp)
+sw a7, 20 (sp)
+sw a1,  24 (sp)
+sw ra, 28 (sp)
+sw s0, 32(sp)
+	
 	mv      a4, zero
         lui     a0, %hi(.L__const.main.pitches) #load upper address
         addi    a6, a0, %lo(.L__const.main.pitches) #load lower address a6 = a0+lower 12 bit label address
         lui     a0, %hi(.L__const.main.duration)
         addi    t0, a0, %lo(.L__const.main.duration)
         addi    a7, zero, 64
-addi sp, sp, -8
-	sw ra, 0x0 (sp)
-	sw s0,4(sp)
+
+
 
 .LBB1_1:  
 	li s0, 7
@@ -49,8 +58,15 @@ addi sp, sp, -8
         bne     a4, s0, .LBB1_1
 .LBB1_1_end:     
         #restore
-        lw ra, 0 (sp)
-        lw s0,4(sp)
-	addi sp, sp, 8	
-        mv      a0, zero
-        ret
+
+lw a2,  0 (sp)
+lw a3,  4 (sp)
+lw a4,  8 (sp)
+lw a5, 12 (sp)
+lw a6, 16 (sp)
+lw a7, 20 (sp)
+lw a1,  24 (sp)
+lw ra, 28 (sp)
+lw s0, 32(sp)#
+        addi sp, sp, 36
+ret

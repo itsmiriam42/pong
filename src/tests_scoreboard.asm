@@ -1,0 +1,26 @@
+# Function to test the scoreboard.asm
+.data 
+sucess_label: .string "Programm terminated sucessfully \0"
+.include "cesplib_rars.asm"
+.text
+
+main:
+li a2,1
+jal draw_right_number
+
+li a2,10
+jal draw_left_number
+
+
+li a7, 4 
+la a0, sucess_label 
+ecall
+
+li a7, 10
+ecall
+
+.include "draw_circle.asm"
+.include "draw_line.asm"
+.include "draw_pixel.asm"
+.include "draw_winscreen.asm" 
+.include "scoreboard.asm"
