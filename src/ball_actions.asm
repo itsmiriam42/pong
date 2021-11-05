@@ -16,10 +16,10 @@ ball_control:
 # s2 current y coordinate of the ball
 # s3 x-component of the ball's current vector
 # s4 y-component of the ball's current vector
-# s5 highest y coordinate reached by the paddle on the left
-# s6 lowest y coordinate reached by the paddle on the left
-# s7 highest y coordinate reached by the paddle on the right
-# s8 lowest y coordinate reached by the paddle on the right
+# s5 lowest y coordinate reached by the paddle on the left
+# s6 highest y coordinate reached by the paddle on the left
+# s7 lowest y coordinate reached by the paddle on the right
+# s8 highest y coordinate reached by the paddle on the right
 # returns:
 # s1 new x coordinate of the ball
 # s2 new y coordinate of the ball
@@ -83,8 +83,8 @@ beq a0, t0, left_collision	# a0=1 if the ball is in the left scoring area
 # a0=2 if the ball is in the right scoring area
 #check_paddle_hit with right paddle data
 mv a1, s2
-mv a2, s7
-mv a3, s8
+mv a2, s8
+mv a3, s7
 jal check_paddle_hit
 beq a0, zero, right_paddle_hit # a0 = 0 if the ball hit the paddle
 # a0 = 1 if the ball didn't hit the paddle
@@ -103,8 +103,8 @@ mv a2, s3
 mv a3, s4
 mv a4, s1
 mv a5, s2
-mv a6, s7
-mv a7, s8
+mv a6, s8
+mv a7, s7
 jal change_ball_direction_paddle
 # update vector
 mv s3, a0
@@ -116,8 +116,8 @@ j no_collision	# no collision anymore, as we dealt with it
 left_collision:
 #check_paddle_hit with left paddle data
 mv a1, s2
-mv a2, s5
-mv a3, s6
+mv a2, s6
+mv a3, s5
 jal check_paddle_hit
 beq a0, zero, left_paddle_hit	# a0 = 0 if the ball hit the paddle
 # a0 = 1 if the ball didn't hit the paddle
@@ -136,8 +136,8 @@ mv a2, s3
 mv a3, s4
 mv a4, s1
 mv a5, s2
-mv a6, s5
-mv a7, s6
+mv a6, s6
+mv a7, s5
 jal change_ball_direction_paddle
 # update vector
 mv s3, a0
