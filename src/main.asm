@@ -133,10 +133,10 @@ bne 	t0, 	t1, 	start_loop
 		beq s11, t1  win_right_player
 		win_right_player:
 			jal win_image_right
-			beq zero, zero, sound_end
 			li  a7, 1          # Prints 2
 			li a0, 2
 			ecall
+			beq zero, zero, sound_end
 		win_left_player:
 			jal win_image_left
 			li  a7, 1          # Prints 3
