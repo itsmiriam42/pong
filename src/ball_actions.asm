@@ -1,12 +1,9 @@
 # Authors: Miriam Penger, Lena Gerken, Tina Höflich
 # Handles various actions concerning the ball in pong
 
-# TODO: check and adapt these values. important: they are used to check with the center of the ball, not its closest edge.
-# TODO: use display measurements as a constant defined up here
-.eqv LEFT_SCORING_BORDER 26	# assuming a display width of 256 and a scoring area width of 40
-.eqv RIGHT_SCORING_BORDER 240	# assuming a display width of 256 and a scoring area width of 40
+# TODO: use display measurements as a constant defined (cesplib_rars.asm)
 
-# TODO: test this function!
+# TODO: finish testing this function!
 # TODO: return 3 in s9 if a paddle was hit so that Tina can play a soundeffect. 
 # TODO: check if an x axis correction of the ball coordinates is necessary with a paddle collision like with the edge collision
 # shares s registers 1-9 with the main function
@@ -65,15 +62,17 @@ mv s4, a1
 
 no_edge_collision: # continue normally, no matter if we just dealt with an edge collision
 # move ball on the display
+
+#the previous position is only needed for the next function
 mv a1, s1
 mv a2, s2
-mv a3, t1
-mv a4, t2
-jal move_ball
-
 # update the ball's position
 mv s1, t1
 mv s2, t2
+# the new position is also needed for the next function
+mv a3, s1
+mv a4, s2
+jal move_ball
 
 # check for collisions
 mv a1, s1
@@ -90,6 +89,13 @@ jal check_paddle_hit
 beq a0, zero, right_paddle_hit # a0 = 0 if the ball hit the paddle
 # a0 = 1 if the ball didn't hit the paddle
 li s9, 2	#SCORE indicator
+
+# delete the ball from the display
+	mv a1, s1 
+	mv a2, s2
+	li a3, 0	#black
+	jal draw_ball
+
 j no_collision	# done
 right_paddle_hit:
 #change_ball_direction_paddle
@@ -116,6 +122,13 @@ jal check_paddle_hit
 beq a0, zero, left_paddle_hit	# a0 = 0 if the ball hit the paddle
 # a0 = 1 if the ball didn't hit the paddle
 li s9, 1	#SCORE indicator
+
+# delete the ball from the display
+	mv a1, s1 
+	mv a2, s2
+	li a3, 0	#black
+	jal draw_ball
+
 j no_collision	# done
 left_paddle_hit:
 #change_ball_direction_paddle
@@ -352,9 +365,7 @@ add a1, a5, a3
 ret
 
 # TODO: see if the vector solution for speed runs smooth enough, add a speed handling function if necessary
-# TODO: some kind of control function to bring it all together -> it also needs to remember the previous position to delete the old ball
 
-# TODO: y-component vector shouldnt be too close to the edges!! otherwise immediate collision or even off screen
 # function to initialize the ball by giving it a random y-Position and direction
 init_ball:
 # returns:
@@ -393,9 +404,10 @@ addi a3, a3, 1	#a3 = 2
 end_y_component:
 # y-coordinate: random number 0-128
 li a0, 0
-li a1, 128
+li a1, 122
 ecall	# randintrange in a0
 mv a1, a0
+addi a1, a1, 3	# the three top and bottom pixels shouldn't be selected as coordinates for the ball's center because the ball wouldn't fit on the display (radius = 3)
 # x-coordinate
 li a0, 128	# ball always starts in the middle of the field
 ret

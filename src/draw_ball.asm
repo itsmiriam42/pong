@@ -7,6 +7,7 @@ draw_ball:
 #----Inputs:----
 # a1: x coordinate of center
 # a2: y coordinate of center
+# a3: color of the ball
 	
 	#Save all necessary values to the stack
 	addi sp, sp, -12
@@ -15,11 +16,11 @@ draw_ball:
 	sw a2, 8 (sp)
 
 	# calc start & end point
+	mv a7, a3	#color
 	addi a3, a1, -3	# x = a1 - radius // left boundary of rectangle
 	addi a4, a2, -3
 	addi a5, a1, 3
-	addi a6, a2, 3
-	li a7, 0xffffff
+	addi a6, a2, 3	
 	jal draw_rectangle
 	
 	

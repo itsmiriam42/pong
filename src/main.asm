@@ -37,7 +37,7 @@ li  a7, 4          # Prints a null-terminated string to the console
 la a0, loop_test
 ecall
 bne 	t0, 	t1, 	start_loop
-	jal image_reset
+	jal draw_blackscreen
 	jal init_ball 
 	# move returned values into registers s1-s4 
 	# s1-s4 used by ball_control
@@ -49,6 +49,7 @@ bne 	t0, 	t1, 	start_loop
 	# draw ball to Bitmap Display
 	mv a1, s1 
 	mv a2,s2
+	li a3, 0xffffff	#white
 	jal draw_ball
 
 	# initial draw of paddles 
@@ -84,15 +85,43 @@ bne 	t0, 	t1, 	start_loop
 		score_left:
 			li t1, 1
 			add s10, t1 ,s10#score left ++
+			li s9, 0 #score indicator = 0
 			mv a2, s10
 			jal draw_left_number
 			jal play_soundeffect
+			jal init_ball
+			# move returned values into registers s1-s4 
+			# s1-s4 used by ball_control
+			mv s1, a0 # x-coordinate of the ball's center
+			mv s2, a1 # y-coordinate of the ball's center
+			mv s3, a2 # x-component of the ball's new vector
+			mv s4, a3 # y-component of the ball's new vector
+
+			# draw ball to Bitmap Display
+			mv a1, s1 
+			mv a2,s2
+			li a3, 0xffffff	#white
+			jal draw_ball
 		score_right:
 			li t1, 1
 			add s11, s11,t1 #score right ++
+			li s9, 0 #score indicator = 0
 			mv a2, s11
 			jal draw_right_number
 			jal play_soundeffect
+			jal init_ball
+			# move returned values into registers s1-s4 
+			# s1-s4 used by ball_control
+			mv s1, a0 # x-coordinate of the ball's center
+			mv s2, a1 # y-coordinate of the ball's center
+			mv s3, a2 # x-component of the ball's new vector
+			mv s4, a3 # y-component of the ball's new vector
+
+			# draw ball to Bitmap Display
+			mv a1, s1 
+			mv a2,s2
+			li a3, 0xffffff	#white
+			jal draw_ball
 		j while_loop
 	end_game:
 		li t1, 11
@@ -123,3 +152,4 @@ bne 	t0, 	t1, 	start_loop
 .include "scoreboard.asm"
 .include "readwordunaligned.asm"
 .include "display_image.asm"
+.include "draw_blackscreen.asm"
