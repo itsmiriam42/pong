@@ -50,6 +50,8 @@ sw a6, 16 (sp)
 sw a7, 20 (sp)
 sw ra,  24 (sp)
 
+# draw dots, in case they have been destroyed
+jal draw_dots
 # draw a black 18 to remove numbers:
 # ----------- 18-----------
   # -1---
@@ -410,7 +412,9 @@ sw a6, 16 (sp)
 sw a7, 20 (sp)
 sw ra, 24 (sp)
 
-# -----------dots---------
+
+# draw dots, in case they have been destroyed
+jal draw_dots
   
 # draw a black 18 to remove numbers:
 # ----------- 18-----------
