@@ -1,7 +1,11 @@
 # Authors: Miriam Penger, Lena Gerken, Tina Höflich
 # Tests for the functions in ball_actions.asm
 
+.include "cesplib_rars.asm"
+.text
 # test code for init_ball
+# expected output (changes within ranges due to random numbers): 
+# 128/somewhere in this range: 3...125/-4, -3, -2, 2, 3, or 4/-4, -3, -2, 2, 3, or 4/128 + third value printed here/second + forth value/0/1/2/0/1/-3/2/4/2/0/1/2
 jal init_ball
 addi sp, sp, -16
 sw a0, 0(sp)	# save x-coordinate
@@ -79,7 +83,7 @@ ecall		# slash
 # test code for check_ball_position if the ball is in the left scoring area
 # gets:
 # a1 current x coordinate of the ball
-li a1, 30
+li a1, 25
 jal check_ball_position
 # returns:
 # a0 = 0 if the ball is within the playing area
@@ -94,7 +98,7 @@ ecall		# slash
 # test code for check_ball_position if the ball is in the right scoring area
 # gets:
 # a1 current x coordinate of the ball
-li a1, 220
+li a1, 230
 jal check_ball_position
 # returns:
 # a0 = 0 if the ball is within the playing area
@@ -194,8 +198,37 @@ li a7, 11
 li a0, 47
 ecall		# slash
 
+# test code for check_ball_edges if no collision happened
+li a1, 70
+jal check_ball_edges
+li a7, 1
+ecall		# print
+li a7, 11
+li a0, 47
+ecall		# slash
+# test code for check_ball_edges if the ball has hit the upper border
+li a1, 0
+jal check_ball_edges
+li a7, 1
+ecall		# print
+li a7, 11
+li a0, 47
+ecall		# slash
+# test code for check_ball_edges if the ball has hit the lower border
+li a1, 128
+jal check_ball_edges
+li a7, 1
+ecall		# print
+li a7, 11
+li a0, 47
+ecall		# slash
+
 addi sp, sp, 16	# stackpointer back
 li a7, 10
 ecall
 
-#.include "ball_actions.asm"
+.include "ball_actions.asm"
+.include "move_ball.asm"
+.include "draw_ball.asm"
+.include "draw_rectangle.asm"
+.include "draw_pixel.asm"
