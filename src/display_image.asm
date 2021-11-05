@@ -169,7 +169,12 @@ load_bmp:
 		
 		addi t4, t4, -1 # äußere Zählvariable veringern
 		bnez t4, loop_y
-		
+	
+	#close file	
+	li a7, 	57
+	mv a0, s3
+	ecall
+	
 	lw s0, 0x0 (sp)
 	lw s1, 0x4 (sp)
 	lw s2, 0x8 (sp)
